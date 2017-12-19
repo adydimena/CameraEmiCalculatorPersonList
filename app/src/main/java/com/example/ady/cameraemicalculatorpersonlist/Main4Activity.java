@@ -1,6 +1,7 @@
 package com.example.ady.cameraemicalculatorpersonlist;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,15 +33,16 @@ public class Main4Activity extends AppCompatActivity {
         String last = etLast.getText().toString();
         clients client = new clients(first,last);
         listofclient.add(client);
+        etFirst.setText(" ");
+        etLast.setText(" ");
 
 
 
     }
 
     public void showCLient(View view) {
-        DataSerializable dataSer = new DataSerializable(listofclient);
         Intent intent = new Intent(this,Main5Activity.class);
-        intent.putExtra("magic",dataSer);
+        intent.putExtra("magic", (Parcelable) listofclient);
        startActivity(intent);
 
 
